@@ -19,6 +19,8 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "add": "^2.0.6",
     "babel-cli": "^6.26.0",
     "babel-preset-flow": "^6.23.0",
     "chalk": "^2.4.2",
@@ -26,9 +28,12 @@
     "express": "^4.17.1",
     "flow-bin": "^0.102.0",
     "glob": "^7.1.4",
+    "imagemin-mozjpeg": "^8.0.0",
     "next": "^8.1.0",
+    "next-optimized-images": "^2.5.3",
     "prettier": "^1.18.2",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "yarn": "^1.16.0"
   },
   "eslintConfig": {
     "extends": "react-app"
