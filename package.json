@@ -12,7 +12,8 @@
     "cypress": "cypress open",
     "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
     "prettier": "node ./scripts/prettier/index.js write-changed",
-    "flow": "flow"
+    "flow": "flow",
+    "eject": "react-scripts eject"
   },
   "dependencies": {
     "react": "^16.8.6",
