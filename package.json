@@ -6,6 +6,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "debug-test": "react-scripts --inspect-brk test --runInBand --no-cache",    
     "prettier": "node ./scripts/prettier/index.js write-changed",
     "eject": "react-scripts eject"
   },
