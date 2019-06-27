@@ -2,13 +2,15 @@
   "name": "qardio-assignment",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+  "scripts": {    
+    "start": "next",
+    "start:production": "next start",
+    "start:server": "node server/index.js",
+    "start:server:production": "NODE_ENV=production node server/index.js",
+    "build": "next build",
     "test": "react-scripts test",
-    "debug-test": "react-scripts --inspect-brk test --runInBand --no-cache",    
-    "prettier": "node ./scripts/prettier/index.js write-changed",
-    "eject": "react-scripts eject"
+    "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
+    "prettier": "node ./scripts/prettier/index.js write-changed"
   },
   "dependencies": {
     "react": "^16.8.6",
@@ -16,7 +18,9 @@
   },
   "devDependencies": {
     "chalk": "^2.4.2",
+    "express": "^4.17.1",
     "glob": "^7.1.4",
+    "next": "^8.1.0",
     "prettier": "^1.18.2",
     "react-scripts": "3.0.1"
   },
