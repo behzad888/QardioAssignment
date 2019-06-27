@@ -2,7 +2,7 @@
   "name": "qardio-assignment",
   "version": "0.1.0",
   "private": true,
-  "scripts": {    
+  "scripts": {
     "start": "next",
     "start:production": "next start",
     "start:server": "node server/index.js",
@@ -10,15 +10,19 @@
     "build": "next build",
     "test": "react-scripts test",
     "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
-    "prettier": "node ./scripts/prettier/index.js write-changed"
+    "prettier": "node ./scripts/prettier/index.js write-changed",
+    "flow": "flow"
   },
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-flow": "^6.23.0",
     "chalk": "^2.4.2",
     "express": "^4.17.1",
+    "flow-bin": "^0.102.0",
     "glob": "^7.1.4",
     "next": "^8.1.0",
     "prettier": "^1.18.2",

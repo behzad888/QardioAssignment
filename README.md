@@ -29,11 +29,11 @@ Open [http://localhost:3001](http://localhost:3001) to view it in the browser.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
+Launches the test runner in the interactive watch mode.
 
 ### `npm test:debug`
 
-Launches the test runner in the interactive watch mode.<br>
+Launches the test runner in the interactive watch mode.
 
 ### `npm run build`
 
@@ -45,4 +45,9 @@ Your app is ready to be deployed!
 
 ### `npm run prettier`
 
-Run opinionated code formatter.<br>
+Run opinionated code formatter.
+
+### `npm run flow`
+
+Run static type checker.<br>
+It does a lot of work to make you more productive. Making you code faster, smarter, more confidently, and to a bigger scale.
