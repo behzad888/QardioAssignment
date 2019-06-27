@@ -10,8 +10,7 @@
     "build": "next build",
     "test": "react-scripts test",
     "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
-    "prettier": "node ./scripts/prettier/index.js write-changed",
-    "eject": "react-scripts eject"
+    "prettier": "node ./scripts/prettier/index.js write-changed"
   },
   "dependencies": {
     "react": "^16.8.6",
