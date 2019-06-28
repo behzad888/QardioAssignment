@@ -42,7 +42,7 @@ body{
 
 .btn {
     font-size: $font-size;
-    line-height: 42px;
+    line-height: 45px;
     display: inline-block;
     text-decoration: none;
     -webkit-user-select: none;
@@ -154,7 +154,7 @@ body{
 }
 
 .slide-show{
-    height: 100%;
+    height: calc(100% - 25px);
     background-size: cover;
     background-repeat: no-repeat;
     background-image: url('./media/img/home.jpg');
@@ -171,4 +171,40 @@ body{
     text-align: center;
     height: 25px;
     line-height: 1.5rem;
+    background-color: $Black;
+    color: $White;
+    display: flex;
+
+    h2{
+        flex:2
+    }
+
+    a.back{
+        color:$White;
+        text-decoration: none;
+        font-size: 2rem;
+        margin-left: 0.5rem;
+    }
+}
+
+.collection{
+    display: flex;
+    height: calc(100% - 25px);
+    .masonry-layout{
+        display: flex;
+        flex-direction: row;
+        flex: 1;
+        position:relative;
+        margin: 25px;
+        .child-item{
+            width:200px;
+            .title{
+                font-size: 1.2rem;
+            }
+            img{
+                height: auto;
+                width: 100%;
+            }
+        }
+    }
 }
