@@ -5,7 +5,7 @@
 [include]
 ./node_modules/
 ./pages/
-./components/
+./src/
 
 [libs]
 

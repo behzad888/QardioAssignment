@@ -12,7 +12,7 @@ const shouldWrite = mode === 'write' || mode === 'write-changed';
 let didWarn = false;
 let didError = false;
 
-const files = glob.sync('{pages/**/*,server/*,components/**/*}.{js,jsx}', {ignore: '**/node_modules/**'});
+const files = glob.sync('{pages/**/*,server/*,src/**/*}.{js,jsx}', {ignore: '**/node_modules/**'});
 
 if (!files.length) {
   return;
