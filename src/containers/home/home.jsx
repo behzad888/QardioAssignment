@@ -7,14 +7,13 @@ import Button from '../../components/button/button';
 
 export default function Home(props) {
   return (
-    <React.Fragment>
-      <Header title="MUSEUM" />
+    <React.Fragment>      
       <SlideShow>
         <div className="content">
           <div className="home-holder">
             <h1 className="title">Welcome to the Museum</h1>
             <Button label="View Events" ghost round component="a" href="#" />
-            <Button label="View Collection" ghost round />
+            <Button label="View Collection" ghost round component="a" href="#" />
           </div>
         </div>
       </SlideShow>

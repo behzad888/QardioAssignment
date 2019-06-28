@@ -2,7 +2,8 @@
 
 body{
     margin: 0;
-    font: 400 $font-size Arial
+    font-size: $font-size;
+    font-family: 'Butler ExtraBold';    
 }
 
 .root, #__next{
@@ -41,7 +42,7 @@ body{
 
 .btn {
     font-size: $font-size;
-    line-height: 44px;
+    line-height: 42px;
     display: inline-block;
     text-decoration: none;
     -webkit-user-select: none;
@@ -50,7 +51,7 @@ body{
     user-select: none;
     text-align: center;
     margin: 10px 0;
-    min-height: 50px;
+    min-height: 45px;
     min-width: 200px;
     -webkit-box-shadow: inset 0 -1px rgba(64,64,64,.4);
     box-shadow: inset 0 -1px rgba(64,64,64,.4);
@@ -153,7 +154,7 @@ body{
 }
 
 .slide-show{
-    height: calc(100% - 25px);
+    height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
     background-image: url('./media/img/home.jpg');
