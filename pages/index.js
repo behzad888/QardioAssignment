@@ -1,11 +1,11 @@
 import React from 'react';
-import HomeSlideShow from '../src/components/home/slide-show';
-import './index.css';
+import Home from '../src/containers/home/home';
+import '../public/assets/theme.scss';
 
 export default function MainPage(props) {
   return (
     <div className="root">
-      <HomeSlideShow />
+      <Home />
     </div>
   );
 }
