@@ -194,7 +194,7 @@ body{
     transition: 0.3s;
     border-radius: 0.2em;
     .card-body{
-        padding: 15px;
+        // padding: 15px;
     }
     .card-header{
         border-radius: 0.2em 0.2em 0 0;
@@ -232,17 +232,28 @@ body{
 .events{
     display: flex;
     flex: 1;
-    flex-direction: row;
     padding: 15px;
+    @media screen and (max-width: 900px) {
+        flex-direction: column;
+    }
+    @media screen and (min-width: 1200px) {
+        flex-direction: row;
+      }
 
     .card-header{
         background-color: $Primary-Color;
     }
     .card-body{
+        padding: 10px 0;
         max-height: 25em;
-        overflow-x: hidden;
-        overflow-y: scroll;
         height: 100%;
+        .list{
+            height: 360px;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            padding:0 15px;
+
+        }
     }
 
     .list-item{
@@ -254,4 +265,26 @@ body{
 
         }
     }
+    .line {
+        fill: none;
+        stroke: $Primary-Color;
+        stroke-width: 1.5;
+    }
+    
+    .overlay {
+        fill: none;
+        pointer-events: all;
+    }
+    
+    /* Style the dots by assigning a fill and stroke */
+    .dot {
+        fill: $Blue;
+        stroke: #fff;        
+    }
+      
+      .focus circle {
+      fill: none;
+      stroke: steelblue;
+    }
+    
 }

@@ -8,13 +8,16 @@ function EventList(props) {
     debugger
   return (
     <Card header={<span> salam </span>}>
+        <div className="list">
+
       {data.map((item,index)=>{
-        return( 
-        <div key={index} className="list-item">
+          return( 
+              <div key={index} className="list-item">
         <span> salam</span>
         </div>)
       })
     }
+    </div>
     </Card>
   );
 }
