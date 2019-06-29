@@ -1,16 +1,5 @@
 @import "./variables";
-
-body{
-    margin: 0;
-    font-size: $font-size;
-    font-family: 'Butler ExtraBold';    
-}
-
-.root, #__next{
-    height: 100vh;
-    width: 100%;
-}
-
+//Root
 *{
     margin: 0;
     padding: 0;
@@ -18,7 +7,17 @@ body{
         outline: -webkit-focus-ring-color auto 0px;
     }
 }
+body{
+    margin: 0;
+    font-size: $font-size;
+    font-family: 'Butler ExtraBold';    
+    .root, #__next{
+        height: 100vh;
+        width: 100%;
+    }
+}
 
+// Home Page
 .content{
     flex: 1;
     justify-content: center;
@@ -39,8 +38,7 @@ body{
         }
     }
 }
-
-
+// SlideShow Component
 .slide-show{
     height: calc(100% - 25px);
     background-size: cover;
@@ -55,7 +53,7 @@ body{
 
 }
 
-
+// Button Component
 .btn {
     font-size: $font-size;
     line-height: 45px;
@@ -168,7 +166,7 @@ body{
         border-radius: 50px
     }
 }
-
+// Header Component
 .header{
     text-align: center;
     height: 25px;
@@ -188,8 +186,7 @@ body{
         margin-left: 0.5rem;
     }
 }
-
-
+// Collection Page
 .collection{
     display: flex;
     height: calc(100% - 25px);
@@ -211,7 +208,7 @@ body{
         }
     }
 }
-
+// Events Page
 .event{
     display: flex;
     flex: 1;
