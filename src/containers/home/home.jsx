@@ -18,7 +18,7 @@ export default function Home(props) {
               ghost
               round
               component="a"
-              href="/eventlist"
+              href="/events"
             />
             <Button
               label="View Collection"

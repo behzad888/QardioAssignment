@@ -7,7 +7,7 @@ export default function Event(props) {
   return (
     <React.Fragment>
       <Header title="MUSEUM" backhref="/" />
-      <div className="event-detail">
+      <div className="events">
       </div>
     </React.Fragment>
   );
