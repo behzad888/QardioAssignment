@@ -10,9 +10,13 @@ type CardPropType = {|
 export default function Card(props: CardPropType) {
   return (
     <div className="card">
+        {props.header && 
       <div className="card-header">{props.header}</div>
+    }
       <div className="card-body">{props.children}</div>
+    {props.footer && 
       <div className="card-footer">{props.footer}</div>
+    }
     </div>
   );
 }

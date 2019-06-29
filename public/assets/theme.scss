@@ -188,7 +188,23 @@ body{
 }
 //CardComponent
 .card{
-    
+    flex:1;
+    margin:10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 0.3em;
+    .card-body{
+        padding: 15px;
+    }
+    .card-header{
+        border-radius: 0.3em 0.3em 0 0;
+        padding: 5px 15px 6px 15px;
+        background-color: $Blue;
+        color: $White;
+    }
+    .card-footer{
+        padding: 5px 15px;
+    }
 }
 // Collection Page
 .collection{
@@ -213,7 +229,8 @@ body{
     }
 }
 // Events Page
-.event{
+.events{
     display: flex;
     flex: 1;
+    flex-direction: row
 }
