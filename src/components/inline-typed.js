@@ -1,2 +1,2 @@
 //@flow
-export type ColorType = 'Red' | 'Pink' | 'Blue' | 'White' | 'Transparent';
+export type ColorType = 'Red' | 'Gray' | 'Blue' | 'White' | 'Transparent';

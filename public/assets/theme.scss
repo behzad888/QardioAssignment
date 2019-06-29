@@ -127,18 +127,18 @@ body{
             background-color: lighten($Red, 15%);
         }
     }
-    @at-root #{&}-Pink{
-        background-color: $Pink;
+    @at-root #{&}-Gray{
+        background-color: $Gray;
         color: $White;
         &:hover{
-            background-color : darken($Pink, 10%)
+            background-color : darken($Gray, 10%)
         }
         &.ghost{
-            border-color: $Pink;
-            color: $Pink;
+            border-color: $Gray;
+            color: $Gray;
         }
         &:active{
-            background-color: lighten($Pink, 15%);
+            background-color: lighten($Gray, 15%);
         }
     }
     @at-root #{&}-Blue{
