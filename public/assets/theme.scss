@@ -162,6 +162,21 @@ body{
         }
     }
 
+    &.Small{
+        font-size: 0.8rem;
+        height: 30px;
+        min-height: 30px;
+        line-height: 10px;
+        min-width: 40px;
+    }
+    &.Medium{
+        font-size: 0.9rem;
+        height: 40px;
+        min-height: 40px;
+        line-height: 15px;
+        min-width: 120px;
+    }
+
     &.round{
         border-radius: 50px
     }
@@ -255,7 +270,6 @@ body{
 
         }
     }
-
     .list-item{
         border-bottom: 1px solid $Gray;
         padding: 10px;
@@ -269,22 +283,31 @@ body{
         fill: none;
         stroke: $Primary-Color;
         stroke-width: 1.5;
-    }
-    
+    }    
     .overlay {
         fill: none;
         pointer-events: all;
-    }
-    
+    }    
     /* Style the dots by assigning a fill and stroke */
     .dot {
         fill: $Blue;
         stroke: #fff;        
-    }
-      
-      .focus circle {
+    }      
+    .focus circle {
       fill: none;
       stroke: steelblue;
     }
     
+}
+.navigation-date{
+    display: flex;
+    flex-direction: row;    
+    .btn{
+        margin: 5px 0;
+    }
+    .title{
+        flex: 1;
+        align-self: center;
+        margin: 0 10px;
+    }
 }

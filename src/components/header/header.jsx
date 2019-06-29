@@ -10,7 +10,7 @@ type HeaderPropsType = {|
 
 function Header(props: HeaderPropsType) {
   return (
-    <div {...props}>
+    <div className={'header ' + props.className}>
       {props.backhref && (
         <a className="back" title="back" href={props.backhref}>
           {' '}
@@ -24,7 +24,6 @@ function Header(props: HeaderPropsType) {
 }
 
 Header.defaultProps = {
-  className: 'header',
   backhref: null,
 };
 

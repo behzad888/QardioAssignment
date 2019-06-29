@@ -7,12 +7,14 @@ type SlideShowProps = {|
   className: string,
 |};
 
-export default function SlideShow(userProps: SlideShowProps) {
-  const props: SlideShowProps = {className: 'slide-show', ...userProps};
-
+function SlideShow(props: SlideShowProps) {
   return (
-    <div className={props.className}>
+    <div className={'slide-show ' + props.className}>
       <div className="action">{props.children}</div>
     </div>
   );
 }
+
+SlideShow.defaultProps = {};
+
+export default SlideShow;
