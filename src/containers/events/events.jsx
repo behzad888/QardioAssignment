@@ -1,14 +1,12 @@
 //@flow
 import React from 'react';
-import Header from '../../components/header/header';
-import Masonry from '../../components/masonry/masonry';
+import {Header, Card} from '../../components';
 
 export default function Event(props) {
   return (
     <React.Fragment>
       <Header title="MUSEUM" backhref="/" />
-      <div className="events">
-      </div>
+      <div className="events"></div>
     </React.Fragment>
   );
 }

@@ -1,7 +1,6 @@
 //@flow
 import React from 'react';
-import Header from '../../components/header/header';
-import Masonry from '../../components/masonry/masonry';
+import {Header, Masonry} from '../../components';
 
 export default function Collection(props) {
   return (

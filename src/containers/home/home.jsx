@@ -1,9 +1,7 @@
 //@flow
 import React from 'react';
 
-import SlideShow from '../../components/slide-show/slide-show';
-import Header from '../../components/header/header';
-import Button from '../../components/button/button';
+import {Header, Button, SlideShow} from '../../components';
 
 export default function Home(props) {
   return (
