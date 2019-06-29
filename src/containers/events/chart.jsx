@@ -4,7 +4,7 @@ import {Card} from '../../components';
 
 function EventChart(props) {
   return (
-    <Card footer={<span> salam </span>} header={<span> salam </span>}>
+    <Card header={<span> salam </span>}>
       Chart
     </Card>
   );
