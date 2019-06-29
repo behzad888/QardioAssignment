@@ -1,20 +1,16 @@
 //@flow
 import React from 'react';
-import {Header, Card} from '../../components';
+import {Header} from '../../components';
+import EventList from './list';
+import EventChart from './chart';
 
 export default function Event(props) {
   return (
     <React.Fragment>
       <Header title="MUSEUM" backhref="/" />
       <div className="events">
-        <Card 
-        footer={(<span> salam </span>)}
-        header={(<span> salam </span>)}>
-          salam
-          </Card>
-        <Card>
-          salam2
-          </Card>
+        <EventList />
+        <EventChart />
       </div>
     </React.Fragment>
   );
