@@ -19,11 +19,11 @@ function MasonryComponent(props: MasonryPropType) {
   //window resize listener side effect
   useEffect(() => {
     const containerSizeHandler = e => {
-      debugger
       let size = props.sizes
         .map(function(size) {
           return (
-            size.minWidth && window.matchMedia('(min-width: ' + size.minWidth + ')').matches
+            size.minWidth &&
+            window.matchMedia('(min-width: ' + size.minWidth + ')').matches
           );
         })
         .indexOf(true);
@@ -41,16 +41,17 @@ function MasonryComponent(props: MasonryPropType) {
     };
   }, []);
 
-//generate masonry items side effect
+  //generate masonry items side effect
   useEffect(() => {
     if (nodes.length <= 0) {
       return;
     }
     const nodesWidths = nodes.map(element => element.clientWidth);
     const nodesHeights = nodes.map(element => element.clientHeight);
-    const columnHeights = Array.apply(null, Array(containerSize.columnCount)).map(
-      () => 0
-    );
+    const columnHeights = Array.apply(
+      null,
+      Array(containerSize.columnCount)
+    ).map(() => 0);
 
     nodes.forEach((element, index) => {
       const columnTarget = columnHeights.indexOf(
@@ -74,11 +75,11 @@ function MasonryComponent(props: MasonryPropType) {
         columnHeights[columnTarget] += nodeHeight + containerSize.gap;
       }
     });
-  }, [nodes,containerSize]);
+  }, [nodes, containerSize]);
 
   //masonry container ref
-  const masonryRefCallback = useCallback(e=>{
-    if(e === null){
+  const masonryRefCallback = useCallback(e => {
+    if (e === null) {
       return;
     }
     const children = [];
@@ -87,7 +88,7 @@ function MasonryComponent(props: MasonryPropType) {
       children.push(element);
     }
     setNodes(children);
-  },[]);
+  }, []);
 
   return (
     <div className="masonry-layout" ref={masonryRefCallback}>
@@ -103,7 +104,7 @@ MasonryComponent.defaultProps = {
     {minWidth: '870px', columnCount: 4, gap: 10},
     {minWidth: '665px', columnCount: 3, gap: 10},
     {columnCount: 2, gap: 10},
-  ]
+  ],
 };
 
 export default memo(MasonryComponent);

@@ -53,17 +53,17 @@ export default function Collection(props) {
     <React.Fragment>
       <Header title="MUSEUM" backhref="/" />
       <div className="collection">
-        <Masonry >
-        {data.map((item, index) => {
-        return (
-          <div className="child-item" key={index}>
-            <img src={item.imageUrl} alt={item.title} />
-            <span className="title">{item.title}</span>
-            <span className="author">{item.author}</span>
-          </div>
-        );
-      })}
-          </Masonry>
+        <Masonry>
+          {data.map((item, index) => {
+            return (
+              <div className="child-item" key={index}>
+                <img src={item.imageUrl} alt={item.title} />
+                <span className="title">{item.title}</span>
+                <span className="author">{item.author}</span>
+              </div>
+            );
+          })}
+        </Masonry>
       </div>
     </React.Fragment>
   );
