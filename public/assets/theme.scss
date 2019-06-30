@@ -10,7 +10,7 @@ $header-size: 25px;
         outline: -webkit-focus-ring-color auto 0px;
     }
 }
-body{
+body, input{
     margin: 0;
     font-size: $font-size;
     font-family: 'Butler ExtraBold';    
@@ -116,6 +116,20 @@ body{
             background-color: lighten($White, 15%);
         }
     }
+    @at-root #{&}-Primary{
+        background-color: $Primary-Color;
+        color: $White;
+        &:hover{
+            background-color : darken($Primary-Color, 10%)
+        }
+        &.ghost{
+            border-color: $Primary-Color;
+            color: $White;
+         }
+         &:active{
+            background-color: lighten($Primary-Color, 15%);
+        }
+    }
     @at-root #{&}-Red{
         background-color: $Red;
         color: $White;
@@ -174,8 +188,7 @@ body{
     }
     &.Medium{
         font-size: 0.9rem;
-        height: 40px;
-        min-height: 40px;
+        min-height: 2.5rem;
         line-height: 15px;
         min-width: 120px;
     }
@@ -228,17 +241,38 @@ body{
 // Collection Page
 .collection{
     display: flex;
+    flex-direction: column;
     padding-top: $header-size;
+    input{
+        margin: 15px;
+        width: 15rem;
+        height: 1rem;
+        padding: 10px;        
+    }
     .masonry-layout{
         display: flex;
         flex-direction: row;
         flex: 1;
         position:relative;
-        margin: 15px;
+        margin: 20px 25px;
         .child-item{
             width:200px;
-            .title{
-                font-size: 1.2rem;
+            .information{
+                display: flex;
+                flex-direction: column;
+                .title{
+                    font-size: 1.2rem;
+                    display: inline-block;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+                .description{
+                    padding-top:10px;
+                    color:$Primary-Color;
+                    font-size: 0.8rem;
+    
+                }
             }
             img{
                 height: auto;
