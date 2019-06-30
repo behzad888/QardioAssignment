@@ -243,11 +243,14 @@ body, input{
     display: flex;
     flex-direction: column;
     padding-top: $header-size;
-    input{
-        margin: 15px;
-        width: 15rem;
-        height: 1rem;
-        padding: 10px;        
+    .search{
+        align-self: center;
+        input{
+            margin: 15px;
+            width: 15rem;
+            height: 1rem;
+            padding: 10px;        
+        }
     }
     .masonry-layout{
         display: flex;

@@ -44,7 +44,7 @@ export default function Collection(props) {
         <div className="search">
           <input
             type="text"
-            placeholder="search"
+            placeholder="Search..."
             value={queryValue}
             onChange={e => setQueryValue(e.target.value)}
           />

@@ -10,19 +10,16 @@ function EventList(props) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const date =
-        currentDate.getFullYear() +
-        '-' +
-        currentDate.getMonth() +
-        '-' +
-        currentDate.getDate();
+      const date =[
+        currentDate.getFullYear(),
+        currentDate.getMonth(),
+        currentDate.getDate()].join('-');
       setIsBusy(true);
 
       fetch(
         `${process.env.NEXT_STATIC_API_URL}agenda/${date}?key=${process.env.NEXT_STATIC_API_KEY}&format=json`
       ).then(res => {
         setIsBusy(false);
-        debugger;
         res
           .json()
           .then(data => {

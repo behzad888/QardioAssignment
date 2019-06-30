@@ -1,11 +1,11 @@
 import {useState} from 'react';
 
 export function useDateSet() {
-  const [currentDate, setCurrentDate] = useState(new Date('2018/05/31'));
+  const [currentDate, setCurrentDate] = useState(new Date());
 
   const onChangeDay = (toDate: number) => {
     //TODO: check valid date
-    var now = new Date();
+    var now = new Date(currentDate);
     now.setDate(toDate);
     setCurrentDate(now);
   };
