@@ -8,10 +8,12 @@ type ButtonPropsType = {|
   label: string,
   ghost: boolean,
   round: boolean,
+  busy: boolean,
   size: ButtonSizeType,
   color: ColorType,
   component: 'a' | 'button',
   href: string,
+  onClick: () => void,
 |};
 
 function Button(props: ButtonPropsType) {
@@ -25,6 +27,11 @@ function Button(props: ButtonPropsType) {
     className += ' round';
   }
 
+  const onClick = e => {
+    if (!props.busy && props.onClick) {
+      props.onClick(e);
+    }
+  };
   switch (props.component) {
     case 'a':
       return (
@@ -34,7 +41,11 @@ function Button(props: ButtonPropsType) {
       );
 
     default:
-      return <button className={className}>{props.label}</button>;
+      return (
+        <button onClick={onClick} className={className}>
+          {props.busy ? '...' : props.label}
+        </button>
+      );
       break;
   }
 }
@@ -45,6 +56,7 @@ Button.defaultProps = {
   size: 'Large',
   ghost: false,
   round: false,
+  busy: false,
   component: 'button',
   href: '#',
 };

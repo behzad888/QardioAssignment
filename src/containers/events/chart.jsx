@@ -1,16 +1,18 @@
 //@flow
 import React, {memo, useRef, useEffect, useState} from 'react';
 import {Card, NavigationDate} from '../../components';
+import {useDateSet} from './hooks';
 import * as d3 from 'd3';
 
 function EventChart(props) {
   const containerRef = useRef(null);
+  const [chartSVG, setChartSVG] = useState(null);
+  const [currentDate, onChangeDay] = useDateSet();
   const [chartSize, setChartSize] = useState({
     margin: {top: 50, right: 50, bottom: 50, left: 50},
     height: 300,
     width: 500,
   });
-  const [chartSVG, setChartSVG] = useState(null);
 
   //window resize listener side effect
   useEffect(() => {
@@ -137,7 +139,14 @@ function EventChart(props) {
   }, [chartSize]);
 
   return (
-    <Card header={<NavigationDate title="Sat Jun 1-7" />}>
+    <Card
+      header={
+        <NavigationDate
+          onNextClick={() => onChangeDay(currentDate.getDate() + 7)}
+          onPrevClick={() => onChangeDay(currentDate.getDate() - 7)}
+          title={currentDate.toDateString()}
+        />
+      }>
       <div ref={containerRef}> </div>
     </Card>
   );

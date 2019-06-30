@@ -1,32 +1,63 @@
 //@flow
 import React, {memo, useState, useEffect} from 'react';
 import {Card, NavigationDate} from '../../components';
+import {useDateSet} from './hooks';
 
 function EventList(props) {
   const [data, setData] = useState([]);
-  const [currentDate, setCurrentDate] = useState(new Date());
+  const [isBusy, setIsBusy] = useState(false);
+  const [currentDate, onChangeDay] = useDateSet();
 
-  useEffect(async () => {
-    const data = await (await fetch(
-      `https://www.rijksmuseum.nl/api/en/agenda/2020-03-31?key=fpGQTuED&format=json`
-    )).json();
+  useEffect(() => {
+    const fetchData = async () => {
+      const date =
+        currentDate.getFullYear() +
+        '-' +
+        currentDate.getMonth() +
+        '-' +
+        currentDate.getDate();
+      setIsBusy(true);
 
-    setData(
-      data.options.map(c => {
-        return {
-          title: c.exposition.name,
-          period: c.period.text,
-          language: c.lang,
-          appropriateFor: c.expositionType.friendlyName,
-          availablePalce: c.period.remaining + ' of ' + c.period.maximum,
-        };
-      })
-    );
-
-    return data;
+      fetch(
+        `${process.env.NEXT_STATIC_API_URL}agenda/${date}?key=${process.env.NEXT_STATIC_API_KEY}&format=json`
+      ).then(res => {
+        setIsBusy(false);
+        debugger;
+        res
+          .json()
+          .then(data => {
+            setData(
+              data.options.map(c => {
+                return {
+                  title: c.exposition.name,
+                  period: c.period.text,
+                  language: c.lang,
+                  appropriateFor: c.expositionType.friendlyName,
+                  availablePalce:
+                    c.period.remaining + ' of ' + c.period.maximum,
+                };
+              })
+            );
+          })
+          .catch(err => {
+            //TODO: ex handler
+            setData([]);
+          });
+      });
+    };
+    fetchData();
   }, [currentDate]);
+
   return (
-    <Card header={<NavigationDate title={currentDate.toDateString()} />}>
+    <Card
+      header={
+        <NavigationDate
+          isBusy={isBusy}
+          onNextClick={() => onChangeDay(currentDate.getDate() + 1)}
+          onPrevClick={() => onChangeDay(currentDate.getDate() - 1)}
+          title={currentDate.toDateString()}
+        />
+      }>
       <div className="list">
         {data.map((item, index) => {
           return (

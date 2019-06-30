@@ -5,6 +5,7 @@ import Button from '../button/button';
 type NavigationDatePropType = {|
   className: string,
   title: string,
+  isBusy: boolean,
   onPrevClick: e => void,
   onNextClick: e => void,
 |};
@@ -14,15 +15,17 @@ function NavigationDate(props: NavigationDatePropType) {
     <div className={'navigation-date ' + props.className}>
       <span className="title">{props.title}</span>
       <Button
+        busy={props.isBusy}
         label="<"
-        onPrevClick={props.onPrevClick}
+        onClick={props.onPrevClick}
         round
         ghost
         size="Small"
       />
       <Button
+        busy={props.isBusy}
         label=">"
-        onNextClick={props.onNextClick}
+        onClick={props.onNextClick}
         round
         ghost
         size="Small"
