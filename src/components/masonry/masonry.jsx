@@ -8,29 +8,22 @@ import React, {
   useCallback,
 } from 'react';
 
-type ItemType = {
-  title: string,
-  imageUrl: string,
-};
-
 type MasonryPropType = {
-  options: any,
-  items: ItemType[],
-  gap: number,
-  onImageLoadComplete: () => void,
+  children: ReactElement<any>[],
 };
 
 function MasonryComponent(props: MasonryPropType) {
   const [containerSize, setContainerSize] = useState(null);
   const [nodes, setNodes] = useState([]);
-  const masonryRef = useRef(null);
 
+  //window resize listener side effect
   useEffect(() => {
     const containerSizeHandler = e => {
+      debugger
       let size = props.sizes
         .map(function(size) {
           return (
-            size.mq && window.matchMedia('(min-width: ' + size.mq + ')').matches
+            size.minWidth && window.matchMedia('(min-width: ' + size.minWidth + ')').matches
           );
         })
         .indexOf(true);
@@ -48,13 +41,14 @@ function MasonryComponent(props: MasonryPropType) {
     };
   }, []);
 
+//generate masonry items side effect
   useEffect(() => {
     if (nodes.length <= 0) {
       return;
     }
     const nodesWidths = nodes.map(element => element.clientWidth);
     const nodesHeights = nodes.map(element => element.clientHeight);
-    const columnHeights = Array.apply(null, Array(containerSize.columns)).map(
+    const columnHeights = Array.apply(null, Array(containerSize.columnCount)).map(
       () => 0
     );
 
@@ -80,98 +74,36 @@ function MasonryComponent(props: MasonryPropType) {
         columnHeights[columnTarget] += nodeHeight + containerSize.gap;
       }
     });
-  }, [nodes]);
+  }, [nodes,containerSize]);
 
-  useEffect(() => {
-    if (!containerSize) {
+  //masonry container ref
+  const masonryRefCallback = useCallback(e=>{
+    if(e === null){
       return;
     }
     const children = [];
-    for (let index = 0; index < masonryRef.current.children.length; index++) {
-      const element = masonryRef.current.children[index];
-      //   element.style.width = `${Math.floor(masonryRef.current.clientWidth / containerSize.columns) - containerSize.gap}px`
-      //   element.style.height = `${Math.floor((Math.random() * props.options.maxHeight) + props.options.minHeight)}px`
+    for (let index = 0; index < e.children.length; index++) {
+      const element = e.children[index];
       children.push(element);
     }
-
     setNodes(children);
-  }, [containerSize]);
+  },[]);
 
   return (
-    <div className="masonry-layout" ref={masonryRef}>
-      {props.items.map((item, index) => {
-        return (
-          <div className="child-item" key={index}>
-            <img src={item.imageUrl} alt={item.title} />
-            <span className="title">{item.title}</span>
-            <span className="author">{item.author}</span>
-          </div>
-        );
-      })}
+    <div className="masonry-layout" ref={masonryRefCallback}>
+      {props.children}
     </div>
   );
 }
 
 MasonryComponent.defaultProps = {
-  options: {
-    columnsCount: 5,
-    minHeight: 150,
-    minWidth: 100,
-    maxHeight: 350,
-  },
   sizes: [
-    {mq: '1275px', columns: 6, gap: 10},
-    {mq: '1083px', columns: 5, gap: 10},
-    {mq: '870px', columns: 4, gap: 10},
-    {mq: '665px', columns: 3, gap: 10},
-    {columns: 2, gap: 10},
-  ],
-  items: [
-    {
-      title: 'salam',
-      imageUrl:
-        'https://structuretone.com/wp-content/uploads/2014/01/Rodin-Museum-6-resize.jpg',
-    },
-    {
-      title: 'Hi',
-      imageUrl:
-        'https://washington-org.s3.amazonaws.com/s3fs-public/children-viewing-henry-the-elephant-at-natural-history-museum_credit-department-of-state-iip-photo-archive.jpg',
-    },
-    {
-      title: 'salam',
-      imageUrl:
-        'https://structuretone.com/wp-content/uploads/2014/01/Rodin-Museum-6-resize.jpg',
-    },
-    {
-      title: 'salam',
-      imageUrl:
-        'https://structuretone.com/wp-content/uploads/2014/01/Rodin-Museum-6-resize.jpg',
-    },
-    {
-      title: 'Hi',
-      imageUrl: 'https://media.timeout.com/images/105246805/630/472/image.jpg',
-    },
-    {
-      title: 'salam',
-      imageUrl:
-        'https://structuretone.com/wp-content/uploads/2014/01/Rodin-Museum-6-resize.jpg',
-    },
-    {
-      title: 'salam',
-      imageUrl:
-        'https://structuretone.com/wp-content/uploads/2014/01/Rodin-Museum-6-resize.jpg',
-    },
-    {
-      title: 'salam',
-      imageUrl:
-        'https://structuretone.com/wp-content/uploads/2014/01/Rodin-Museum-6-resize.jpg',
-    },
-    {
-      title: 'salam',
-      imageUrl:
-        'https://structuretone.com/wp-content/uploads/2014/01/Rodin-Museum-6-resize.jpg',
-    },
-  ],
+    {minWidth: '1275px', columnCount: 6, gap: 10},
+    {minWidth: '1083px', columnCount: 5, gap: 10},
+    {minWidth: '870px', columnCount: 4, gap: 10},
+    {minWidth: '665px', columnCount: 3, gap: 10},
+    {columnCount: 2, gap: 10},
+  ]
 };
 
 export default memo(MasonryComponent);
