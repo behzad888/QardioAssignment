@@ -10,10 +10,11 @@ function EventList(props) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const date =[
+      const date = [
         currentDate.getFullYear(),
         currentDate.getMonth(),
-        currentDate.getDate()].join('-');
+        currentDate.getDate(),
+      ].join('-');
       setIsBusy(true);
 
       fetch(

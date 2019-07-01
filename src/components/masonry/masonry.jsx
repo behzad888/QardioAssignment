@@ -109,10 +109,26 @@ function MasonryComponent(props: MasonryPropType) {
 
 MasonryComponent.defaultProps = {
   sizes: [
-    {minWidth: '1275px', columnCount: 6, gap: 10},
-    {minWidth: '1083px', columnCount: 5, gap: 10},
-    {minWidth: '870px', columnCount: 4, gap: 10},
-    {minWidth: '665px', columnCount: 3, gap: 10},
+    {
+      minWidth: '1275px',
+      columnCount: 6,
+      gap: 10,
+    },
+    {
+      minWidth: '1083px',
+      columnCount: 5,
+      gap: 10,
+    },
+    {
+      minWidth: '870px',
+      columnCount: 4,
+      gap: 10,
+    },
+    {
+      minWidth: '665px',
+      columnCount: 3,
+      gap: 10,
+    },
     {columnCount: 2, gap: 10},
   ],
 };

@@ -4,13 +4,24 @@ import {Card, NavigationDate} from '../../components';
 import {useDateSet} from './hooks';
 import * as d3 from 'd3';
 
+const dayCount = 7;
 function EventChart(props) {
   const containerRef = useRef(null);
   const [chartSVG, setChartSVG] = useState(null);
+  const [busy, setBusy] = useState(null);
   const [currentDate, onChangeDay] = useDateSet();
+  const [chartData, setChartData] = useState({
+    items: [],
+    maxEventScheduledCound: 16,
+  });
   const [chartSize, setChartSize] = useState({
-    margin: {top: 50, right: 50, bottom: 50, left: 50},
-    height: 300,
+    margin: {
+      top: 50,
+      right: 50,
+      bottom: 50,
+      left: 50,
+    },
+    height: 250,
     width: 500,
   });
 
@@ -21,7 +32,12 @@ function EventChart(props) {
     }
     debugger;
     const containerSizeHandler = e => {
-      let margin = {top: 50, right: 50, bottom: 50, left: 50},
+      let margin = {
+          top: 50,
+          right: 50,
+          bottom: 50,
+          left: 50,
+        },
         width =
           parseInt(d3.select(containerRef.current).style('width')) -
           margin.left -
@@ -30,7 +46,13 @@ function EventChart(props) {
           containerRef.current.parentElement.clientHeight -
           margin.top -
           margin.bottom; // Use the window's height
-      setChartSize(Object.assign({margin, width, height}));
+      setChartSize(
+        Object.assign({
+          margin,
+          width,
+          height,
+        })
+      );
     };
     // containerSizeHandler();
     window.addEventListener('resize', containerSizeHandler);
@@ -41,72 +63,108 @@ function EventChart(props) {
   }, []);
 
   useEffect(() => {
+    const fetchDate = async () => {
+      let dataKeeper = [];
+      let max = 0;
+      let stableIndex = 0;
+      setBusy(true);
+      for (let index = 0; index < dayCount; index++) {
+        const date = new Date(currentDate);
+        date.setDate(currentDate.getDate() + index);
+        const stringDate = [
+          date.getFullYear(),
+          date.getMonth(),
+          date.getDate(),
+        ].join('-');
+
+        fetch(
+          `${process.env.NEXT_STATIC_API_URL}agenda/${stringDate}?key=${process.env.NEXT_STATIC_API_KEY}&format=json`
+        ).then(res => {
+          res.json().then(data => {
+            dataKeeper.push(data.options);
+            stableIndex++;
+
+            if (stableIndex >= dayCount) {
+              let count = 0;
+              let temp = [];
+              dataKeeper.forEach(options => {
+                options
+                  .map(c => c.period)
+                  .forEach(item => {
+                    count += item.maximum - item.remaining;
+                  });
+                max = count > max ? count : max;
+                temp.push({y: count});
+              });
+              if (max === 0) {
+                max = max + 16;
+              } else {
+                max = max + 5;
+              }
+              setChartData({
+                items: temp,
+                maxEventScheduledCound: max,
+              });
+              setBusy(false);
+            }
+          });
+        });
+      }
+    };
+
+    fetchDate();
+  }, [currentDate]);
+
+  useEffect(() => {
     if (chartSVG === null) {
       return;
     }
-  }, [chartSVG]);
-
-  useEffect(() => {
-    if (chartSVG === null) return;
-    // The number of datapoints
-    var n = 21;
-
-    // 5. X scale will use the index of our data
     var xScale = d3
       .scaleLinear()
-      .domain([0, n - 1]) // input
-      .range([0, chartSize.width]); // output
+      .domain([1, dayCount])
+      .range([0, chartSize.width]);
 
-    // 6. Y scale will use the randomly generate number
     var yScale = d3
       .scaleLinear()
-      .domain([0, 1]) // input
-      .range([chartSize.height, 0]); // output
+      .domain([0, chartData.maxEventScheduledCound])
+      .range([chartSize.height, 0]);
 
     // 7. d3's line generator
     var line = d3
       .line()
       .x(function(d, i) {
-        return xScale(i);
-      }) // set the x values for the line generator
+        return xScale(i + 1);
+      })
       .y(function(d) {
         return yScale(d.y);
-      }) // set the y values for the line generator
-      .curve(d3.curveMonotoneX); // apply smoothing to the line
+      })
+      .curve(d3.curveMonotoneX);
 
-    // 8. An array of objects of length N. Each object has key -> value pair, the key being "y" and the value is a random number
-    var dataset = d3.range(n).map(function(d) {
-      return {y: d3.randomUniform(1)()};
-    });
-    // 3. Call the x axis in a group tag
     chartSVG
       .append('g')
       .attr('class', 'x axis')
       .attr('transform', 'translate(0,' + chartSize.height + ')')
-      .call(d3.axisBottom(xScale)); // Create an axis component with d3.axisBottom
+      .call(d3.axisBottom(xScale));
 
-    // 4. Call the y axis in a group tag
     chartSVG
       .append('g')
       .attr('class', 'y axis')
-      .call(d3.axisLeft(yScale)); // Create an axis component with d3.axisLeft
+      .call(d3.axisLeft(yScale));
 
-    // 9. Append the path, bind the data, and call the line generator
     chartSVG
       .append('path')
-      .datum(dataset) // 10. Binds data to the line
-      .attr('class', 'line') // Assign a class for styling
-      .attr('d', line); // 11. Calls the line generator
+      .datum(chartData.items)
+      .attr('class', 'line')
+      .attr('d', line);
 
-    // 12. Appends a circle for each datapoint
     chartSVG
       .selectAll('.dot')
-      .data(dataset)
+      .data(chartData.items)
       .enter()
       .append('circle') // Uses the enter().append() method
       .attr('class', 'dot') // Assign a class for styling
       .attr('cx', function(d, i) {
-        return xScale(i);
+        return xScale(i + 1);
       })
       .attr('cy', function(d) {
         return yScale(d.y);
@@ -117,7 +175,7 @@ function EventChart(props) {
   useEffect(() => {
     if (!chartSize) return;
     d3.select('svg').remove();
-    // 1. Add the SVG to the page and employ #2
+    // Add the SVG to the page
     const svg = d3
       .select(containerRef.current)
       .append('svg')
@@ -136,15 +194,26 @@ function EventChart(props) {
       );
 
     setChartSVG(svg);
-  }, [chartSize]);
+  }, [chartData, chartSize]);
+
+  const SevenDays = () => {
+    let date = new Date(currentDate);
+    date.setDate(currentDate.getDate() + (dayCount - 1));
+    return date.toDateString();
+  };
 
   return (
     <Card
       header={
         <NavigationDate
-          onNextClick={() => onChangeDay(currentDate.getDate() + 7)}
-          onPrevClick={() => onChangeDay(currentDate.getDate() - 7)}
-          title={currentDate.toDateString()}
+          isBusy={busy}
+          onNextClick={() =>
+            onChangeDay(currentDate.getDate() + (dayCount - 1))
+          }
+          onPrevClick={() =>
+            onChangeDay(currentDate.getDate() - (dayCount - 1))
+          }
+          title={currentDate.toDateString() + ' - ' + SevenDays()}
         />
       }>
       <div ref={containerRef}> </div>
