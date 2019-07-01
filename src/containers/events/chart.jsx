@@ -90,33 +90,36 @@ function EventChart() {
             ((process.env: any): {[string]: string}).NEXT_STATIC_API_KEY
           }&format=json`
         ).then(res => {
-          res.json().then(data => {
-            dataKeeper.push(data.options);
-            stableIndex++;
+          res
+            .json()
+            .then(data => {
+              dataKeeper.push(data.options);
+              stableIndex++;
 
-            if (stableIndex >= dayCount) {
-              let count = 0;
-              let temp = [];
-              dataKeeper.forEach(options => {
-                options
-                  .map(c => c.period)
-                  .forEach(item => {
-                    count += item.maximum - item.remaining;
-                  });
-                max = count > max ? count : max;
-                temp.push({y: count});
-              });
-              max = max === 0 ? max + 16 : max + 5;
-              setChartData({
-                items: temp,
-                maxEventScheduledCound: max,
-              });
+              if (stableIndex >= dayCount) {
+                let count = 0;
+                let temp = [];
+                dataKeeper.forEach(options => {
+                  options
+                    .map(c => c.period)
+                    .forEach(item => {
+                      count += item.maximum - item.remaining;
+                    });
+                  max = count > max ? count : max;
+                  temp.push({y: count});
+                });
+                max = max === 0 ? max + 16 : max + 5;
+                setChartData({
+                  items: temp,
+                  maxEventScheduledCound: max,
+                });
+                setBusy(false);
+              }
+            })
+            .catch(err => {
+              //TODO: handle ex
               setBusy(false);
-            }
-          }).catch(err=>{
-            //TODO: handle ex
-            setBusy(false);
-          });
+            });
         });
       }
     };

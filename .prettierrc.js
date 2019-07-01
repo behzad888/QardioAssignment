@@ -10,7 +10,7 @@ module.exports = {
 
   overrides: [
     {
-      files: 'src/**/*.js',
+      files: ['src/**/*.js', 'cypress/**/*.js'],
       options: {
         trailingComma: 'all',
       },

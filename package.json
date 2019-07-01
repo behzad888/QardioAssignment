@@ -10,7 +10,7 @@
     "build": "next build",
     "test": "node scripts/tasks/test.js",
     "test:debug": "node --inspect-brk node_modules/jest/bin/jest.js --runInBand --no-cache",
-    "cypress": "cypress open",
+    "cypress": "npm run start & cypress open",
     "prettier": "node ./scripts/prettier/index.js write-changed",
     "flow": "flow"
   },
