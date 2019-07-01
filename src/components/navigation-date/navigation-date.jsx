@@ -21,6 +21,7 @@ function NavigationDate(props: NavigationDatePropType) {
         round
         ghost
         size="small"
+        className="prev"
       />
       <Button
         busy={props.isBusy}
@@ -29,6 +30,7 @@ function NavigationDate(props: NavigationDatePropType) {
         round
         ghost
         size="small"
+        className="next"
       />
     </div>
   );

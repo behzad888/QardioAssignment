@@ -13,6 +13,7 @@ type ButtonPropsType = {|
   color?: ColorType,
   component?: 'a' | 'button',
   href?: string,
+  className?: string,
   children?: ReactElement<any>,
   forwardedRef?: {current: HTMLButtonElement | HTMLAnchorElement | null},
   onClick?: (e: Element) => void,
@@ -37,7 +38,7 @@ function Button(props: ButtonPropsType) {
   switch (props.component) {
     case 'a':
       return (
-        <a ref={props.forwardedRef} className={className} href={props.href}>
+        <a ref={props.forwardedRef} className={className + ' ' + (props.className || '')} href={props.href}>
           {props.label}
         </a>
       );

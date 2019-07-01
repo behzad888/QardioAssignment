@@ -2,7 +2,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import renderer from 'react-test-renderer';
+import Enzyme,{shallow} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import NavigationDate from '../navigation-date/navigation-date';
+
+Enzyme.configure({ adapter: new Adapter() });
 
 describe('while navigation date test running in a browser environment', () => {
   let container, wrapper;
@@ -36,4 +40,19 @@ describe('while navigation date test running in a browser environment', () => {
       .toJSON();
     expect(wrapper).toMatchSnapshot();
   });
+
+  describe('Event Responder', ()=>{ 
+    it('onPrevClick', ()=>{      
+      const onNextClick = jest.fn();
+      const wrapper = shallow(<NavigationDate onNextClick={onNextClick}/>);
+      wrapper.find('.next').simulate('click');
+      expect(onNextClick).toHaveBeenCalledTimes(1)
+    });
+    it('onNextClick', ()=>{
+      const onPrevClick = jest.fn();
+      const wrapper = shallow(<NavigationDate onPrevClick={onPrevClick}/>);
+      wrapper.find('.prev').simulate('click');
+      expect(onPrevClick).toHaveBeenCalledTimes(1)
+    });
+  })
 });
