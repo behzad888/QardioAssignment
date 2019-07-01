@@ -1,5 +1,7 @@
 # Qardio Inc. Assignment
 
+## Check out the [**Documentation**](./docs/index.md).
+
 ## Available Scripts
 
 In the project directory, you can run:
