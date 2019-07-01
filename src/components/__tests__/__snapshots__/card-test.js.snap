@@ -1,5 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`while card test running in a browser environment should render body 1`] = `
+<div>
+  <div
+    className="card "
+  >
+    <div
+      className="card-body"
+    >
+      <div>
+        This is Body
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`while card test running in a browser environment should render correctly 1`] = `
 <div>
   <div
@@ -11,28 +27,13 @@ exports[`while card test running in a browser environment should render correctl
        This is a Card View 
     </div>
   </div>
+</div>
+`;
+
+exports[`while card test running in a browser environment should render header 1`] = `
+<div>
   <div
-    className="card card-test"
-  >
-    <div
-      className="card-body"
-    >
-       This is a Card View 
-    </div>
-  </div>
-  <div
-    className="card card-test"
-  >
-    <div
-      className="card-body"
-    >
-      <div>
-        This is a Cord View with Card body
-      </div>
-    </div>
-  </div>
-  <div
-    className="card card-test"
+    className="card "
   >
     <div
       className="card-header"
@@ -44,8 +45,56 @@ exports[`while card test running in a browser environment should render correctl
     <div
       className="card-body"
     >
+       This is a Card View 
+    </div>
+  </div>
+</div>
+`;
+
+exports[`while card test running in a browser environment should render nested card 1`] = `
+<div>
+  <div
+    className="card card-test-parent"
+  >
+    <div
+      className="card-body"
+    >
       <div>
-        This is a Cord View with Card body
+        <div
+          className="card card-test-child"
+        >
+          <div
+            className="card-body"
+          >
+            <div
+              className="card card-test-inner-child"
+            >
+              <div
+                className="card-body"
+              >
+                <div>
+                  This is Body
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`while card test running in a browser environment should render with custom className 1`] = `
+<div>
+  <div
+    className="card card-test-class-name"
+  >
+    <div
+      className="card-body"
+    >
+      <div>
+        This is Body
       </div>
     </div>
   </div>
