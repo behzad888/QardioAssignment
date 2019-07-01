@@ -113,6 +113,9 @@ function EventChart() {
               });
               setBusy(false);
             }
+          }).catch(err=>{
+            //TODO: handle ex
+            setBusy(false);
           });
         });
       }
