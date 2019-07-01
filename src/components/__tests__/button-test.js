@@ -176,7 +176,7 @@ describe('while button tests running in a browser environment', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  describe('onClick', () => {
+  describe('Event Responder', () => {
     let onClick, ref;
 
     beforeEach(() => {
