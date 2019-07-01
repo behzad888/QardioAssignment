@@ -5,7 +5,6 @@ import {
   Masonry,
   Button,
   ImagesLoaded,
-  type EnvType,
 } from '../../components';
 
 export default function Collection() {
