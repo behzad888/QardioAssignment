@@ -17,9 +17,8 @@ export default function Collection() {
   useEffect(() => {
     const fetchData = async () => {
       setBusy(true);
-      const env: EnvType = process.env;
       fetch(
-        `${env.NEXT_STATIC_API_URL}collection?q=${query}&key=${env.NEXT_STATIC_API_KEY}&format=json`
+        `${((process.env: any): {[string]: string}).NEXT_STATIC_API_URL}collection?q=${query}&key=${((process.env: any): {[string]: string}).NEXT_STATIC_API_KEY}&format=json`
       ).then(res => {
         setBusy(false);
         res.json().then(result => {

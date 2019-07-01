@@ -1,6 +1,6 @@
 //@flow
 import React, {memo, useState, useEffect} from 'react';
-import {Card, NavigationDate, type EnvType} from '../../components';
+import {Card, NavigationDate} from '../../components';
 import {useDateSet} from './hooks';
 
 function EventList() {
@@ -17,9 +17,8 @@ function EventList() {
       ].join('-');
       setIsBusy(true);
 
-      const env: EnvType = process.env;
       fetch(
-        `${env.NEXT_STATIC_API_URL}agenda/${date}?key=${env.NEXT_STATIC_API_KEY}&format=json`
+        `${((process.env: any): {[string]: string}).NEXT_STATIC_API_URL}agenda/${date}?key=${((process.env: any): {[string]: string}).NEXT_STATIC_API_KEY}&format=json`
       ).then(res => {
         setIsBusy(false);
         res
