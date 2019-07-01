@@ -4,7 +4,7 @@ import {Header} from '../../components';
 import EventList from './list';
 import EventChart from './chart';
 
-export default function Event(props) {
+export default function Event() {
   return (
     <React.Fragment>
       <Header title="MUSEUM" backhref="/" />

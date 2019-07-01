@@ -1,9 +1,9 @@
 //@flow
 import React, {memo, useState, useEffect} from 'react';
-import {Card, NavigationDate} from '../../components';
+import {Card, NavigationDate, type EnvType} from '../../components';
 import {useDateSet} from './hooks';
 
-function EventList(props) {
+function EventList() {
   const [data, setData] = useState([]);
   const [isBusy, setIsBusy] = useState(false);
   const [currentDate, onChangeDay] = useDateSet();
@@ -17,8 +17,9 @@ function EventList(props) {
       ].join('-');
       setIsBusy(true);
 
+      const env: EnvType = process.env;
       fetch(
-        `${process.env.NEXT_STATIC_API_URL}agenda/${date}?key=${process.env.NEXT_STATIC_API_KEY}&format=json`
+        `${env.NEXT_STATIC_API_URL}agenda/${date}?key=${env.NEXT_STATIC_API_KEY}&format=json`
       ).then(res => {
         setIsBusy(false);
         res
@@ -85,4 +86,4 @@ function EventList(props) {
     </Card>
   );
 }
-export default memo(EventList);
+export default memo<any>(EventList);

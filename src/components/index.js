@@ -1,3 +1,4 @@
+//@flow
 import Card from './card/card';
 import Masonry from './masonry/masonry';
 import Header from './header/header';

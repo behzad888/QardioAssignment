@@ -1,14 +1,18 @@
 //@flow
 import React, {memo, useRef, useEffect, useState} from 'react';
-import {Card, NavigationDate} from '../../components';
+import {Card, NavigationDate, type EnvType} from '../../components';
 import {useDateSet} from './hooks';
 import * as d3 from 'd3';
 
+type SelectorType = {
+  parentElement: HTMLElement & { clientHeight: number} | null & { clientHeight: number}
+}
+
 const dayCount = 7;
-function EventChart(props) {
-  const containerRef = useRef(null);
+function EventChart() {
+  const containerRef = useRef<HTMLElement | any>(null);
   const [chartSVG, setChartSVG] = useState(null);
-  const [busy, setBusy] = useState(null);
+  const [busy, setBusy] = useState(false);
   const [currentDate, onChangeDay] = useDateSet();
   const [chartData, setChartData] = useState({
     items: [],
@@ -30,6 +34,8 @@ function EventChart(props) {
     if (containerRef.current === null) {
       return;
     }
+
+    const selector : SelectorType | any = containerRef.current;
     const containerSizeHandler = e => {
       let margin = {
           top: 50,
@@ -38,11 +44,11 @@ function EventChart(props) {
           left: 50,
         },
         width =
-          parseInt(d3.select(containerRef.current).style('width')) -
+          parseInt(d3.select(selector).style('width')) -
           margin.left -
           margin.right, // Use the window's width
         height =
-          containerRef.current.parentElement.clientHeight -
+        selector.parentElement.clientHeight -
           margin.top -
           margin.bottom; // Use the window's height
       setChartSize(
@@ -77,8 +83,9 @@ function EventChart(props) {
           date.getDate(),
         ].join('-');
 
+        const env: EnvType = process.env;
         fetch(
-          `${process.env.NEXT_STATIC_API_URL}agenda/${stringDate}?key=${process.env.NEXT_STATIC_API_KEY}&format=json`
+          `${env.NEXT_STATIC_API_URL}agenda/${stringDate}?key=${env.NEXT_STATIC_API_KEY}&format=json`
         ).then(res => {
           res.json().then(data => {
             dataKeeper.push(data.options);
@@ -216,4 +223,4 @@ function EventChart(props) {
   );
 }
 
-export default memo(EventChart);
+export default memo<any>(EventChart);

@@ -1,8 +1,8 @@
 //@flow
 import React, {useState, useEffect} from 'react';
-import {Header, Masonry, Button, ImagesLoaded} from '../../components';
+import {Header, Masonry, Button, ImagesLoaded, type EnvType} from '../../components';
 
-export default function Collection(props) {
+export default function Collection() {
   const [query, setQuery] = useState('');
   const [busy, setBusy] = useState(false);
   const [queryValue, setQueryValue] = useState('');
@@ -11,8 +11,9 @@ export default function Collection(props) {
   useEffect(() => {
     const fetchData = async () => {
       setBusy(true);
+      const env: EnvType = process.env;
       fetch(
-        `${process.env.NEXT_STATIC_API_URL}collection?q=${query}&key=${process.env.NEXT_STATIC_API_KEY}&format=json`
+        `${env.NEXT_STATIC_API_URL}collection?q=${query}&key=${env.NEXT_STATIC_API_KEY}&format=json`
       ).then(res => {
         setBusy(false);
         res.json().then(result => {
@@ -56,7 +57,7 @@ export default function Collection(props) {
             onClick={e => setQuery(queryValue)}
           />
         </div>
-        <Masonry>
+        <Masonry size>
           {data.map((item, index) => {
             return (
               <div className="child-item" key={index}>

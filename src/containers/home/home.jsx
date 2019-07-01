@@ -3,7 +3,7 @@ import React from 'react';
 
 import {Header, Button, SlideShow} from '../../components';
 
-export default function Home(props) {
+export default function Home() {
   return (
     <React.Fragment>
       <Header title="MUSEUM" />
@@ -15,12 +15,14 @@ export default function Home(props) {
               label="View Events"
               ghost
               round
+              size="large"
               component="a"
               href="/events"
             />
             <Button
               label="View Collection"
               ghost
+              size="large"
               round
               component="a"
               href="/collection"

@@ -9,20 +9,28 @@ import React, {
 } from 'react';
 import ImagesLoaded from '../images-loaded/images-loaded';
 
+type SizeType={
+  minWidth?: string,
+  columnCount: number,
+  gap: number,
+} 
 type MasonryPropType = {
   children: ReactElement<any>[],
+  sizes: SizeType[],
 };
 
 function MasonryComponent(props: MasonryPropType) {
-  const [containerSize, setContainerSize] = useState(null);
+  const [containerSize, setContainerSize] = useState<SizeType | null>(null);
   const [nodes, setNodes] = useState([]);
   const [imagesLoaded, setImagesLoaded] = useState(true);
 
   //window resize listener side effect
   useEffect(() => {
     const containerSizeHandler = e => {
-      let size = props.sizes
-        .map(function(size) {
+      if(props.sizes === null){
+        return;
+      }
+      let size = props.sizes.map(function(size) {
           return (
             size.minWidth &&
             window.matchMedia('(min-width: ' + size.minWidth + ')').matches
@@ -48,6 +56,9 @@ function MasonryComponent(props: MasonryPropType) {
   //generate masonry items side effect
   useEffect(() => {
     if (nodes.length <= 0) {
+      return;
+    }
+    if(containerSize === null){
       return;
     }
     const nodesWidths = nodes.map(element => element.clientWidth);
@@ -133,4 +144,4 @@ MasonryComponent.defaultProps = {
   ],
 };
 
-export default memo(MasonryComponent);
+export default memo<MasonryPropType|any>(MasonryComponent);

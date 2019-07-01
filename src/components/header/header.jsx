@@ -2,15 +2,15 @@
 import React, {type Element as ReactElement, memo} from 'react';
 
 type HeaderPropsType = {|
-  children: ReactElement<any>,
-  className: string,
-  title: string,
-  backhref: string,
+  children?: ReactElement<any>,
+  className?: string,
+  title?: string,
+  backhref?: string,
 |};
 
 function Header(props: HeaderPropsType) {
   return (
-    <div className={'header ' + props.className}>
+    <div className={'header ' + (props.className || '')}>
       {props.backhref && (
         <a className="back" title="back" href={props.backhref}>
           {' '}
@@ -25,6 +25,7 @@ function Header(props: HeaderPropsType) {
 
 Header.defaultProps = {
   backhref: null,
+  className: '',
 };
 
-export default memo(Header);
+export default memo<HeaderPropsType>(Header);
