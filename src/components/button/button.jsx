@@ -38,7 +38,10 @@ function Button(props: ButtonPropsType) {
   switch (props.component) {
     case 'a':
       return (
-        <a ref={props.forwardedRef} className={className + ' ' + (props.className || '')} href={props.href}>
+        <a
+          ref={props.forwardedRef}
+          className={className + ' ' + (props.className || '')}
+          href={props.href}>
           {props.label}
         </a>
       );
