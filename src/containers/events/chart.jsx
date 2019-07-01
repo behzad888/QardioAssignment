@@ -30,7 +30,6 @@ function EventChart(props) {
     if (containerRef.current === null) {
       return;
     }
-    debugger;
     const containerSizeHandler = e => {
       let margin = {
           top: 50,
@@ -64,10 +63,11 @@ function EventChart(props) {
 
   useEffect(() => {
     const fetchDate = async () => {
-      let dataKeeper = [];
+      const dataKeeper = [];
       let max = 0;
       let stableIndex = 0;
       setBusy(true);
+      //API does not support range date parameter      
       for (let index = 0; index < dayCount; index++) {
         const date = new Date(currentDate);
         date.setDate(currentDate.getDate() + index);
@@ -96,11 +96,7 @@ function EventChart(props) {
                 max = count > max ? count : max;
                 temp.push({y: count});
               });
-              if (max === 0) {
-                max = max + 16;
-              } else {
-                max = max + 5;
-              }
+              max = max === 0 ? max + 16 : max + 5;
               setChartData({
                 items: temp,
                 maxEventScheduledCound: max,
@@ -129,7 +125,6 @@ function EventChart(props) {
       .domain([0, chartData.maxEventScheduledCound])
       .range([chartSize.height, 0]);
 
-    // 7. d3's line generator
     var line = d3
       .line()
       .x(function(d, i) {
@@ -161,8 +156,8 @@ function EventChart(props) {
       .selectAll('.dot')
       .data(chartData.items)
       .enter()
-      .append('circle') // Uses the enter().append() method
-      .attr('class', 'dot') // Assign a class for styling
+      .append('circle')
+      .attr('class', 'dot')
       .attr('cx', function(d, i) {
         return xScale(i + 1);
       })
