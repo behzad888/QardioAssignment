@@ -24,18 +24,14 @@ describe('while card test running in a browser environment', () => {
     wrapper = renderer
       .create(
         <div>
-        <Card> This is a Card View </Card>
-        <Card className="card-test"> This is a Card View </Card>
-        <Card className="card-test">
-          <div>
-            This is a Cord View with Card body
-            </div>
-        </Card>
-        <Card className="card-test" header={<span>Header</span>}>
-          <div>
-            This is a Cord View with Card body
-            </div>
-        </Card>
+          <Card> This is a Card View </Card>
+          <Card className="card-test"> This is a Card View </Card>
+          <Card className="card-test">
+            <div>This is a Cord View with Card body</div>
+          </Card>
+          <Card className="card-test" header={<span>Header</span>}>
+            <div>This is a Cord View with Card body</div>
+          </Card>
         </div>,
       )
       .toJSON();

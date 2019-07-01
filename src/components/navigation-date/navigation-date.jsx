@@ -20,7 +20,7 @@ function NavigationDate(props: NavigationDatePropType) {
         onClick={props.onPrevClick}
         round
         ghost
-        size="Small"
+        size="small"
       />
       <Button
         busy={props.isBusy}
@@ -28,7 +28,7 @@ function NavigationDate(props: NavigationDatePropType) {
         onClick={props.onNextClick}
         round
         ghost
-        size="Small"
+        size="small"
       />
     </div>
   );

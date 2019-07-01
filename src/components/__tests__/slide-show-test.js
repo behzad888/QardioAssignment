@@ -24,12 +24,11 @@ describe('while slide show test running in a browser environment', () => {
     wrapper = renderer
       .create(
         <div>
-        <SlideShow>
-        <div className="content">
-          <div className="home-holder">
-          </div>
-          </div>
-        </SlideShow>
+          <SlideShow>
+            <div className="content">
+              <div className="home-holder"></div>
+            </div>
+          </SlideShow>
         </div>,
       )
       .toJSON();

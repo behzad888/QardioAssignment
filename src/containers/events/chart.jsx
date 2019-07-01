@@ -5,8 +5,10 @@ import {useDateSet} from './hooks';
 import * as d3 from 'd3';
 
 type SelectorType = {
-  parentElement: HTMLElement & { clientHeight: number} | null & { clientHeight: number}
-}
+  parentElement:
+    | (HTMLElement & {clientHeight: number})
+    | (null & {clientHeight: number}),
+};
 
 const dayCount = 7;
 function EventChart() {
@@ -35,7 +37,7 @@ function EventChart() {
       return;
     }
 
-    const selector : SelectorType | any = containerRef.current;
+    const selector: SelectorType | any = containerRef.current;
     const containerSizeHandler = e => {
       let margin = {
           top: 50,
@@ -48,9 +50,7 @@ function EventChart() {
           margin.left -
           margin.right, // Use the window's width
         height =
-        selector.parentElement.clientHeight -
-          margin.top -
-          margin.bottom; // Use the window's height
+          selector.parentElement.clientHeight - margin.top - margin.bottom; // Use the window's height
       setChartSize(
         Object.assign({
           margin,
@@ -73,7 +73,7 @@ function EventChart() {
       let max = 0;
       let stableIndex = 0;
       setBusy(true);
-      //API does not support range date parameter      
+      //API does not support range date parameter
       for (let index = 0; index < dayCount; index++) {
         const date = new Date(currentDate);
         date.setDate(currentDate.getDate() + index);
@@ -84,7 +84,11 @@ function EventChart() {
         ].join('-');
 
         fetch(
-          `${((process.env: any): {[string]: string}).NEXT_STATIC_API_URL}agenda/${stringDate}?key=${((process.env: any): {[string]: string}).NEXT_STATIC_API_KEY}&format=json`
+          `${
+            ((process.env: any): {[string]: string}).NEXT_STATIC_API_URL
+          }agenda/${stringDate}?key=${
+            ((process.env: any): {[string]: string}).NEXT_STATIC_API_KEY
+          }&format=json`
         ).then(res => {
           res.json().then(data => {
             dataKeeper.push(data.options);

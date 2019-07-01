@@ -1,23 +1,25 @@
 //@flow
-import React, {memo} from 'react';
+import React, {memo, forwardRef, type Element as ReactElement} from 'react';
 import type {ColorType} from '../inline-typed';
 
-type ButtonSizeType = 'large' | 'Medium' | 'Small';
+type ButtonSizeType = 'large' | 'medium' | 'small';
 
 type ButtonPropsType = {|
   label: string,
-  ghost: boolean,
-  round: boolean,
-  busy: boolean,
+  ghost?: boolean,
+  round?: boolean,
+  busy?: boolean,
   size: ButtonSizeType,
-  color: ColorType,
-  component: 'a' | 'button',
-  href: string,
+  color?: ColorType,
+  component?: 'a' | 'button',
+  href?: string,
+  children?: ReactElement<any>,
+  forwardedRef?: {current: HTMLButtonElement | HTMLAnchorElement | null},
   onClick?: (e: Element) => void,
 |};
 
 function Button(props: ButtonPropsType) {
-  let className = `btn ${props.size} btn-${props.color}`;
+  let className = `btn ${props.size} btn-${props.color || ''}`;
 
   if (props.ghost) {
     className += ' ghost';
@@ -35,15 +37,18 @@ function Button(props: ButtonPropsType) {
   switch (props.component) {
     case 'a':
       return (
-        <a className={className} href={props.href}>
+        <a ref={props.forwardedRef} className={className} href={props.href}>
           {props.label}
         </a>
       );
 
     default:
       return (
-        <button onClick={onClick} className={className}>
-          {props.busy ? '...' : props.label}
+        <button
+          ref={props.forwardedRef}
+          onClick={onClick}
+          className={className}>
+          {props.busy ? '...' : props.children || props.label}
         </button>
       );
   }
@@ -60,4 +65,9 @@ Button.defaultProps = {
   href: '#',
 };
 
-export default Button;
+export default forwardRef<
+  ButtonPropsType,
+  HTMLAnchorElement | HTMLButtonElement | null
+>((props, ref: any) => {
+  return <Button {...props} forwardedRef={ref} />;
+});

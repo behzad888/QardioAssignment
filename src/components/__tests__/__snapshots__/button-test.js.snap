@@ -1,6 +1,113 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`while button tests running in a browser environment should render correctly 1`] = `
+exports[`while button tests running in a browser environment color variants: should render blue button 1`] = `
+<button
+  className="btn large btn-Blue"
+  onClick={[Function]}
+>
+  This is a Button
+</button>
+`;
+
+exports[`while button tests running in a browser environment color variants: should render gray button 1`] = `
+<button
+  className="btn large btn-Gray"
+  onClick={[Function]}
+>
+  This is a Button
+</button>
+`;
+
+exports[`while button tests running in a browser environment color variants: should render primary button 1`] = `
+<button
+  className="btn large btn-Primary"
+  onClick={[Function]}
+>
+  This is a Button
+</button>
+`;
+
+exports[`while button tests running in a browser environment color variants: should render red button 1`] = `
+<button
+  className="btn large btn-Red"
+  onClick={[Function]}
+>
+  This is a Button
+</button>
+`;
+
+exports[`while button tests running in a browser environment color variants: should render transparent button 1`] = `
+<button
+  className="btn large btn-Transparent"
+  onClick={[Function]}
+>
+  This is a Button
+</button>
+`;
+
+exports[`while button tests running in a browser environment color variants: should render white button 1`] = `
+<button
+  className="btn large btn-White"
+  onClick={[Function]}
+>
+  This is a Button
+</button>
+`;
+
+exports[`while button tests running in a browser environment link component with tag a should render as an anchor with href="#" 1`] = `
+<a
+  className="btn large btn-White"
+  href="#"
+>
+  This is a Link
+</a>
+`;
+
+exports[`while button tests running in a browser environment link component with tag a should render as an anchor with https://www.getqardio.com 1`] = `
+<a
+  className="btn large btn-White"
+  href="https://www.getqardio.com"
+>
+  This is a Link
+</a>
+`;
+
+exports[`while button tests running in a browser environment should render busy with three dot 1`] = `
+<div>
+  <button
+    className="btn large btn-White"
+    onClick={[Function]}
+  >
+    ...
+  </button>
+  <button
+    className="btn large btn-White"
+    onClick={[Function]}
+  >
+    ...
+  </button>
+</div>
+`;
+
+exports[`while button tests running in a browser environment should render child should render nested node 1`] = `
+<div>
+  <button
+    className="btn large btn-White"
+    onClick={[Function]}
+  >
+    <button
+      className="btn large btn-White"
+      onClick={[Function]}
+    >
+      <h2>
+        This is a Button
+      </h2>
+    </button>
+  </button>
+</div>
+`;
+
+exports[`while button tests running in a browser environment should render child should render with child node 1`] = `
 <div>
   <button
     className="btn large btn-White"
@@ -15,46 +122,57 @@ exports[`while button tests running in a browser environment should render corre
     This is a Button
   </button>
   <button
-    className="btn large btn-White ghost"
+    className="btn large btn-White"
     onClick={[Function]}
   >
-    This is a Button
+    <h2>
+      This is a Button
+    </h2>
   </button>
-  <button
-    className="btn large btn-White ghost round"
-    onClick={[Function]}
-  >
-    This is a Button
-  </button>
-  <button
-    className="btn small btn-White ghost round"
-    onClick={[Function]}
-  >
-    This is a Button
-  </button>
-  <button
-    className="btn small btn-White ghost round"
-    onClick={[Function]}
-  >
-    This is a Button
-  </button>
-  <button
-    className="btn large btn-White ghost round"
-    onClick={[Function]}
-  >
-    ...
-  </button>
-  <button
-    className="btn large btn-Red ghost round"
-    onClick={[Function]}
-  >
-    This is a Button
-  </button>
-  <a
-    className="btn large btn-White ghost round"
-    href="https://www.getqardio.com/"
-  >
-    This is a Link Button
-  </a>
 </div>
+`;
+
+exports[`while button tests running in a browser environment should render ghost and round should render ghost button 1`] = `
+<button
+  className="btn large btn-White ghost"
+  onClick={[Function]}
+>
+  This is a Button
+</button>
+`;
+
+exports[`while button tests running in a browser environment should render ghost and round should render round button 1`] = `
+<button
+  className="btn large btn-White round"
+  onClick={[Function]}
+>
+  This is a Button
+</button>
+`;
+
+exports[`while button tests running in a browser environment size variants: should render large button 1`] = `
+<button
+  className="btn large btn-White"
+  onClick={[Function]}
+>
+  This is a Button
+</button>
+`;
+
+exports[`while button tests running in a browser environment size variants: should render medium button 1`] = `
+<button
+  className="btn medium btn-White"
+  onClick={[Function]}
+>
+  This is a Button
+</button>
+`;
+
+exports[`while button tests running in a browser environment size variants: should render small button 1`] = `
+<button
+  className="btn small btn-White"
+  onClick={[Function]}
+>
+  This is a Button
+</button>
 `;

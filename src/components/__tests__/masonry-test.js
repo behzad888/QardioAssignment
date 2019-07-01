@@ -24,12 +24,12 @@ describe('while masonry test running in a browser environment', () => {
     wrapper = renderer
       .create(
         <div>
-        <Masonry>
-          <div className="child-item-1"></div>
-          <div className="child-item-2"></div>
-          <div className="child-item-3"></div>
-          <div className="child-item-4"></div>
-        </Masonry>
+          <Masonry>
+            <div className="child-item-1"></div>
+            <div className="child-item-2"></div>
+            <div className="child-item-3"></div>
+            <div className="child-item-4"></div>
+          </Masonry>
         </div>,
       )
       .toJSON();

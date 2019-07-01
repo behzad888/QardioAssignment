@@ -24,12 +24,12 @@ describe('while images loaded test running in a browser environment', () => {
     wrapper = renderer
       .create(
         <div>
-        <ImagesLoaded>
-          <img src="https://www.getqardio.com/wp-content/uploads/2019/05/19_14_General_Summer_WD_HP_EN.jpg" />
-          <img src="https://www.getqardio.com/wp-content/uploads/2019/05/19_14_General_Summer_WD_HP_EN.jpg" />
-          <img src="https://www.getqardio.com/wp-content/uploads/2019/05/19_14_General_Summer_WD_HP_EN.jpg" />
-          <img src="https://www.getqardio.com/wp-content/uploads/2019/05/19_14_General_Summer_WD_HP_EN.jpg" />
-          <img src="https://www.getqardio.com/wp-content/uploads/2019/05/19_14_General_Summer_WD_HP_EN.jpg" />
+          <ImagesLoaded>
+            <img src="https://www.getqardio.com/wp-content/uploads/2019/05/19_14_General_Summer_WD_HP_EN.jpg" />
+            <img src="https://www.getqardio.com/wp-content/uploads/2019/05/19_14_General_Summer_WD_HP_EN.jpg" />
+            <img src="https://www.getqardio.com/wp-content/uploads/2019/05/19_14_General_Summer_WD_HP_EN.jpg" />
+            <img src="https://www.getqardio.com/wp-content/uploads/2019/05/19_14_General_Summer_WD_HP_EN.jpg" />
+            <img src="https://www.getqardio.com/wp-content/uploads/2019/05/19_14_General_Summer_WD_HP_EN.jpg" />
           </ImagesLoaded>
         </div>,
       )

@@ -1,11 +1,6 @@
 //@flow
 import React, {useState, useEffect} from 'react';
-import {
-  Header,
-  Masonry,
-  Button,
-  ImagesLoaded,
-} from '../../components';
+import {Header, Masonry, Button, ImagesLoaded} from '../../components';
 
 export default function Collection() {
   const [query, setQuery] = useState('');
@@ -17,7 +12,11 @@ export default function Collection() {
     const fetchData = async () => {
       setBusy(true);
       fetch(
-        `${((process.env: any): {[string]: string}).NEXT_STATIC_API_URL}collection?q=${query}&key=${((process.env: any): {[string]: string}).NEXT_STATIC_API_KEY}&format=json`
+        `${
+          ((process.env: any): {[string]: string}).NEXT_STATIC_API_URL
+        }collection?q=${query}&key=${
+          ((process.env: any): {[string]: string}).NEXT_STATIC_API_KEY
+        }&format=json`
       ).then(res => {
         setBusy(false);
         res.json().then(result => {
@@ -56,7 +55,7 @@ export default function Collection() {
           <Button
             busy={busy}
             color="Primary"
-            size="Medium"
+            size="medium"
             label="Search"
             onClick={e => setQuery(queryValue)}
           />

@@ -24,10 +24,13 @@ describe('while navigation date test running in a browser environment', () => {
     wrapper = renderer
       .create(
         <div>
-        <NavigationDate />
-        <NavigationDate  className="navigation-date-test" />
-        <NavigationDate   className="navigation-date-test" title={new Date().toDateString()}/>
-        <NavigationDate   isBusy={true}/>
+          <NavigationDate />
+          <NavigationDate className="navigation-date-test" />
+          <NavigationDate
+            className="navigation-date-test"
+            title={new Date().toDateString()}
+          />
+          <NavigationDate isBusy={true} />
         </div>,
       )
       .toJSON();

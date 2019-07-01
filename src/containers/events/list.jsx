@@ -18,7 +18,11 @@ function EventList() {
       setIsBusy(true);
 
       fetch(
-        `${((process.env: any): {[string]: string}).NEXT_STATIC_API_URL}agenda/${date}?key=${((process.env: any): {[string]: string}).NEXT_STATIC_API_KEY}&format=json`
+        `${
+          ((process.env: any): {[string]: string}).NEXT_STATIC_API_URL
+        }agenda/${date}?key=${
+          ((process.env: any): {[string]: string}).NEXT_STATIC_API_KEY
+        }&format=json`
       ).then(res => {
         setIsBusy(false);
         res
