@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`while navigation date test running in a browser environment should render correctly 1`] = `
+<div>
+  <div
+    className="navigation-date "
+  >
+    <span
+      className="title"
+    >
+      Mon Jul 01 2019
+    </span>
+    <button
+      className="btn Small btn-White ghost round"
+      onClick={[Function]}
+    >
+      &lt;
+    </button>
+    <button
+      className="btn Small btn-White ghost round"
+      onClick={[Function]}
+    >
+      &gt;
+    </button>
+  </div>
+  <div
+    className="navigation-date navigation-date-test"
+  >
+    <span
+      className="title"
+    >
+      Mon Jul 01 2019
+    </span>
+    <button
+      className="btn Small btn-White ghost round"
+      onClick={[Function]}
+    >
+      &lt;
+    </button>
+    <button
+      className="btn Small btn-White ghost round"
+      onClick={[Function]}
+    >
+      &gt;
+    </button>
+  </div>
+  <div
+    className="navigation-date navigation-date-test"
+  >
+    <span
+      className="title"
+    >
+      Mon Jul 01 2019
+    </span>
+    <button
+      className="btn Small btn-White ghost round"
+      onClick={[Function]}
+    >
+      &lt;
+    </button>
+    <button
+      className="btn Small btn-White ghost round"
+      onClick={[Function]}
+    >
+      &gt;
+    </button>
+  </div>
+  <div
+    className="navigation-date "
+  >
+    <span
+      className="title"
+    >
+      Mon Jul 01 2019
+    </span>
+    <button
+      className="btn Small btn-White ghost round"
+      onClick={[Function]}
+    >
+      ...
+    </button>
+    <button
+      className="btn Small btn-White ghost round"
+      onClick={[Function]}
+    >
+      ...
+    </button>
+  </div>
+</div>
+`;
