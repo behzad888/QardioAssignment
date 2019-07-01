@@ -1,6 +1,12 @@
 //@flow
 import React, {useState, useEffect} from 'react';
-import {Header, Masonry, Button, ImagesLoaded, type EnvType} from '../../components';
+import {
+  Header,
+  Masonry,
+  Button,
+  ImagesLoaded,
+  type EnvType,
+} from '../../components';
 
 export default function Collection() {
   const [query, setQuery] = useState('');

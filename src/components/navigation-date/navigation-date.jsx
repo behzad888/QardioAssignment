@@ -6,8 +6,8 @@ type NavigationDatePropType = {|
   className: string,
   title: string,
   isBusy: boolean,
-  onPrevClick: (e:EventTarget) => void,
-  onNextClick: (e:EventTarget) => void,
+  onPrevClick: (e: EventTarget) => void,
+  onNextClick: (e: EventTarget) => void,
 |};
 
 function NavigationDate(props: NavigationDatePropType) {

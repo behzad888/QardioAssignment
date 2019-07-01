@@ -13,7 +13,7 @@ type ButtonPropsType = {|
   color: ColorType,
   component: 'a' | 'button',
   href: string,
-  onClick?: (e:Element) => void,
+  onClick?: (e: Element) => void,
 |};
 
 function Button(props: ButtonPropsType) {
@@ -27,7 +27,7 @@ function Button(props: ButtonPropsType) {
     className += ' round';
   }
 
-  const onClick = (e:Element) => {
+  const onClick = (e: Element) => {
     if (!props.busy && props.onClick) {
       props.onClick(e);
     }

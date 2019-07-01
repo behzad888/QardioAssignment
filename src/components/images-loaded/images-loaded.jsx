@@ -2,11 +2,10 @@
 import React, {Component, type Element as ReactElement} from 'react';
 import imagesLoaded from 'imagesloaded';
 
-type ImagesLoadedType={
-  onFinished: (e:boolean)=>void,
+type ImagesLoadedType = {
+  onFinished: (e: boolean) => void,
   children: ReactElement<any>,
-}
-
+};
 
 function ImagesLoaded(props: ImagesLoadedType) {
   const imagesLoadedRefCallback = e => {
@@ -15,7 +14,7 @@ function ImagesLoaded(props: ImagesLoadedType) {
     }
     const loaded = imagesLoaded(e);
     if (props.onFinished) {
-      loaded.on('always', (e) => {
+      loaded.on('always', e => {
         if (e.isComplete) props.onFinished(e.isComplete);
       });
     }
